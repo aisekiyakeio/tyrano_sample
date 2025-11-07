@@ -7,7 +7,7 @@
 
 「限界カフェ店員メロス」[l][r]
 
-[bg storage=angry.jpg time=200 width=100]
+[bg storage=angry.jpg time=200]
 
 客は激怒した。[l][r]
 
@@ -19,6 +19,7 @@
 (2分前)
 [p]
 
+[bg storage=cafe.jpg time=500]
 メロス「いらっしゃいませ！」[l][r]
 
 いつものように自動ドアが開く。[l][r]
@@ -46,7 +47,7 @@
 ご注文がお決まりでしたらお伺いします[p]
 [freeimage layer=base]
 [bg storage=angry.jpg time=500]
-わしはコーヒーなんぞ飲みたくない！[r][cm]
+わしはコーヒーなんぞ飲みたくない！[l][cm]
 【 BAD END 】[l][cm]
 
 [jump target=*start]
