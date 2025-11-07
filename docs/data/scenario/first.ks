@@ -5,6 +5,8 @@
 [wait time=200]
 [freeimage layer="base"]
 
+[cm]
+
 「限界カフェ店員メロス」[l][r]
 
 [bg storage=angry.jpg time=200]
@@ -51,7 +53,7 @@
 
 *tag_washer2
 [cm]
-客「ブレンドコーヒーを一つ！」[l][r]
+客「ブレンドコーヒー！」[l][r]
 
 レジには誰もいないのに、客が注文する声が聞こえる。[l][r]
 
@@ -82,7 +84,20 @@
 [bg storage=cafe.jpg time=500]
 メロス「ご注文がお決まりでしたらお伺いします」[p]
 
-[freeimage layer=base]
+[iscript]
+// 1から100までのランダムな整数を生成
+f.random_val = Math.ceil(Math.random() * 100);
+[endscript]
+
+[if exp="f.random_val <= 40"]
+    ; 乱数が50以下（50%の確率）の場合
+    [jump target="*tag_unreasonable"]
+[else]
+    ; 乱数が51以上（50%の確率）の場合
+    [jump target="tag_true_order"]
+[endif]
+
+*tag_unreasonable
 [bg storage=angry.jpg time=500]
 わしはコーヒーなんぞ飲みたくない！[l][cm]
 【 BAD END 】[l][cm]
@@ -102,5 +117,80 @@
 [bg storage=angry.jpg time=500]
 客「客を待たせておいてなんだその態度は！」[l][cm]
 【 BAD END 】[l][cm]
+
+[jump target=*start]
+
+*tag_true_order
+[cm]
+
+客が無言でメニュー表を指さす[l][r]
+
+[link target=*tag_true_order2] →「ブレンドコーヒーですね」 [endlink][r]
+[link target=*tag_brend] →「アイスコーヒーですね」 [endlink][r]
+[s]
+
+[jump target=*start]
+
+*tag_brend
+[cm]
+[bg storage=angry.jpg time=500]
+客「こんなに寒いんだからブレンドに決まってるだろ！」[l][cm]
+【 BAD END 】[l][cm]
+
+[jump target=*start]
+
+*tag_true_order2
+[cm]
+どうやら客はブレンドコーヒーが飲みたかったようだ[l][r]
+[link target=*tag_noisy] →「サイズはいかがなさいますか？」 [endlink][r]
+[link target=*tag_cashier] →「お会計350円です」 [endlink][r]
+[s]
+
+[jump target=*start]
+
+*tag_noisy
+[cm]
+[bg storage=angry.jpg time=500]
+客「言わなくてもわかるだろ！」[l][cm]
+【 BAD END 】[l][cm]
+[jump target=*start]
+
+*tag_cashier
+[cm]
+客が懐から薄いケースを取り出す。[l][r]
+
+[link target=*tag_noisy] →「お支払方法は？」 [endlink][r]
+[link target=*tag_cashier2] →無言で交通系IC支払いボタンを押す [endlink][r]
+[s]
+
+*tag_cashier2
+[cm]
+メロス「ありがとうございます」[l][r]
+メロス「店内用のご用意でよろしかったでしょうか」[l][r]
+客は無言で外を指さす。[l][r]
+
+[link target=*tag_noisy] →「レシートはご入用ですか？」 [endlink][r]
+[link target=*tag_takeout] →なるべく早くブレンドを提供する [endlink][r]
+[s]
+
+*tag_takeout
+[cm]
+メロスはカップにスリーブを着け、客に手渡した。[l][r]
+メロス「ご利用ありがとうございました！」[l][r]
+
+客は足早に自動ドアに向かって歩き去っていった。[l][cm]
+
+【 GOOD END 】[l][cm]
+
+[freeimage layer=base]
+
+...[l][cm]
+
+[bg storage=angry.jpg time=500]
+男性が足早に戻ってきて叫んだ。[l][r]
+「ブレンドコーヒーがぬるい！」[l][cm]
+【 BAD END 】[l][r]
+[l][r]
+※このゲームは、すべて作者の体験に基づいて作られています。[l][cm]
 
 [jump target=*start]
