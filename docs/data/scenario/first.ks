@@ -89,11 +89,11 @@
 f.random_val = Math.ceil(Math.random() * 100);
 [endscript]
 
-[if exp="f.random_val <= 40"]
-    ; 乱数が50以下（50%の確率）の場合
+[if exp="f.random_val <= 60"]
+    ; 乱数が60以下（60%の確率）の場合
     [jump target="*tag_unreasonable"]
 [else]
-    ; 乱数が51以上（50%の確率）の場合
+    ; 乱数が61以上（40%の確率）の場合
     [jump target="tag_true_order"]
 [endif]
 
